@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAKRA- Teknik Sepeda Motor</title>
+    <title>CAKRA - Teknik Sepeda Motor</title>
     <!-- Google Fonts & FontAwesome untuk Ikon -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Meta Redirect Otomatis ke Canva Site (Menghindari Iframe Block) -->
+    <meta http-equiv="refresh" content="1;url=https://yframadhan.my.canva.site/yfpembelajaran">
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body, html { 
@@ -15,18 +19,19 @@
             overflow: hidden; 
             background-color: #F8FAFC; 
             font-family: 'Montserrat', sans-serif; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         #loading-screen {
-            position: fixed;
-            inset: 0;
             background: linear-gradient(135deg, #F8FAFC 0%, #E6F6F5 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            z-index: 999;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
+            width: 100%;
+            height: 100%;
         }
 
         .loading-card {
@@ -108,6 +113,19 @@
             font-size: 11px;
             font-weight: 500;
             line-height: 1.4;
+            margin-bottom: 16px;
+        }
+
+        .direct-link {
+            color: #00A39D;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            border-bottom: 1px dashed #00A39D;
+            transition: color 0.2s;
+        }
+        .direct-link:hover {
+            color: #013a1c;
         }
 
         /* Bar progres halus di bawah kartu */
@@ -121,29 +139,15 @@
         }
 
         .progress-bar {
-            width: 0%;
-            height: 100%;
-            background: linear-gradient(90deg, #00A39D, #F5A623);
-            animation: progressPulse 2s ease-in-out infinite;
-        }
-
-        @keyframes progressPulse {
-            0% { width: 10%; }
-            50% { width: 75%; }
-            100% { width: 95%; }
-        }
-        
-        iframe {
             width: 100%;
             height: 100%;
-            border: none;
-            display: block;
+            background: linear-gradient(90deg, #00A39D, #F5A623);
         }
     </style>
 </head>
 <body>
 
-    <!-- Animasi Loading Awal Estetik -->
+    <!-- Animasi Loading Awal Estetik Sebelum Redirect -->
     <div id="loading-screen">
         <div class="loading-card">
             <div class="logo-container">
@@ -156,7 +160,8 @@
 
             <h3>CAKRA</h3>
             <div class="subtitle">MAN 1 Kota Cirebon</div>
-            <p class="desc">Memuat Sistem Pembelajaran Otomotif</p>
+            <p class="desc">Mengalihkan ke Sistem Pembelajaran Otomotif...</p>
+            <a href="https://yframadhan.my.canva.site/yfpembelajaran" class="direct-link">Klik jika tidak otomatis dialihkan</a>
 
             <div class="progress-bar-container">
                 <div class="progress-bar"></div>
@@ -164,20 +169,13 @@
         </div>
     </div>
 
-    <!-- Iframe dengan URL Web App Google Apps Script Anda -->
-    <iframe id="app-frame" src="https://yframadhan.my.canva.site/yfpembelajaran" 
-            onload="const screen = document.getElementById('loading-screen'); screen.style.opacity='0'; setTimeout(()=>screen.style.visibility='hidden', 500);"
-            allow="fullscreen; camera; microphone; clipboard-read; clipboard-write">
-    </iframe>
-
     <script>
-        // Penanganan pengaman jika iframe mendeteksi blokir bingkai dari Google
-        const iframe = document.getElementById('app-frame');
-        iframe.onerror = function() {
-            console.warn("Gagal memuat iframe langsung, mengalihkan ke mode langsung...");
-            window.location.href = iframe.src;
-        };
+        // Eksekusi redirect via Javascript setelah 1 detik
+        setTimeout(function() {
+            window.location.replace("https://yframadhan.my.canva.site/yfpembelajaran");
+        }, 1000);
     </script>
 
 </body>
 </html>
+
